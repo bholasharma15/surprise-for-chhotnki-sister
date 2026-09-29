@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday Chhotnki Sister ❤️</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold-primary: #f6d365;
+      --gold-secondary: #fda085;
+      --gold-metallic: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      --font-cinzel: 'Cinzel', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --font-serif: 'Playfair Display', serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background-color: #030106;
+      color: #fff;
+      font-family: var(--font-body);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    #celebrationCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 60;
+      pointer-events: none;
+    }
+
+    .scene-viewport {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      perspective: 1000px;
+      overflow: hidden;
+    }
+
+    .room-world {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-style: preserve-3d;
+      transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1), filter 2s ease;
+      background: radial-gradient(circle at 50% 35%, #2a081a 0%, #11020a 55%, #020005 100%);
+    }
+
+    .room-world.enter-walk {
+      transform: scale(1.22) translateZ(100px) translateY(-2%);
+      filter: brightness(1.25);
+    }
+
+    .fairy-lights-string {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: space-evenly;
+      z-index: 15;
+      pointer-events: none;
+    }
+
+    .bulb {
+      width: 10px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ffebb3;
+      box-shadow: 0 0 15px 4px #ffc107;
+      animation: bulbBlink 1.8s infinite alternate;
+    }
+    .bulb:nth-child(2n) { animation-delay: 0.3s; background: #ff7597; box-shadow: 0 0 15px 4px #e91e63; }
+    .bulb:nth-child(3n) { animation-delay: 0.6s; background: #ffe066; box-shadow: 0 0 15px 4px #ffb300; }
+    .bulb:nth-child(4n) { animation-delay: 0.9s; background: #90caf9; box-shadow: 0 0 15px 4px #2196f3; }
+
+    @keyframes bulbBlink {
+      0% { opacity: 0.35; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1.15); }
+    }
+
+    .chandelier-cluster {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      z-index: 18;
+      pointer-events: none;
+    }
+
+    .jhoomar-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-origin: top center;
+      animation: swingJhoomar 5s ease-in-out infinite alternate;
+    }
+    .jhoomar-unit.center { transform: scale(1.1); margin: 0 4vw; }
+    .jhoomar-unit.side { transform: scale(0.65); opacity: 0.85; margin-top: -10px; }
+
+    .j-chain {
+      width: 3px;
+      height: 55px;
+      background: linear-gradient(to bottom, #7e5a14, #ffd700, #7e5a14);
+    }
+    .j-tier-main {
+      width: 120px;
+      height: 22px;
+      border: 3px solid #ffe57f;
+      border-radius: 50%;
+      background: rgba(255, 215, 0, 0.2);
+      box-shadow: 0 0 25px 8px rgba(255, 215, 0, 0.45);
+      position: relative;
+    }
+    .j-tier-small {
+      width: 70px;
+      height: 15px;
+      border: 2px solid #ffe57f;
+      border-radius: 50%;
+      background: rgba(255, 215, 0, 0.25);
+      margin-top: -4px;
+      box-shadow: 0 0 20px #ffc107;
+    }
+    .j-crystal-hangs {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: -3px;
+    }
+    .j-crystal {
+      width: 5px;
+      height: 26px;
+      background: linear-gradient(180deg, #fff, #ffd700, transparent);
+      clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+      box-shadow: 0 0 10px #fff;
+    }
+    @keyframes swingJhoomar {
+      0% { transform: rotate(-2deg); }
+      100% { transform: rotate(2deg); }
+    }
+
+    .curtain {
+      position: absolute;
+      top: 0;
+      width: 120px;
+      height: 100%;
+      background: radial-gradient(circle at 40% 50%, #4a0319 0%, #20000a 100%);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+      z-index: 12;
+      pointer-events: none;
+    }
+    .curtain.left { left: 0; border-radius: 0 0 70px 0; }
+    .curtain.right { right: 0; border-radius: 0 0 0 70px; }
+
+    .room-balloon {
+      position: absolute;
+      width: 44px;
+      height: 56px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      opacity: 0.85;
+      animation: floatRoomB 3.5s ease-in-out infinite alternate;
+      z-index: 11;
+      pointer-events: none;
+    }
+    @keyframes floatRoomB {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-16px); }
+    }
+
+    .stage-center {
+      position: absolute;
+      bottom: 11%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 25;
+    }
+
+    .table-stand {
+      width: 290px;
+      height: 28px;
+      background: linear-gradient(90deg, #3d1b06, #804018, #3d1b06);
+      border-radius: 14px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.95), inset 0 2px 4px #ffc107;
+      position: relative;
+    }
+    .table-runner {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      right: 20px;
+      height: 55px;
+      background: repeating-linear-gradient(45deg, #d81b60, #d81b60 10px, #ffffff 10px, #ffffff 20px);
+      clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%);
+      opacity: 0.88;
+    }
+
+    .gift-container {
+      width: 130px;
+      height: 105px;
+      background: linear-gradient(135deg, #c2185b, #6a0030);
+      border-radius: 8px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 15px 40px rgba(194, 24, 91, 0.4);
+      margin-bottom: -5px;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .gift-lid-cap {
+      width: 142px;
+      height: 28px;
+      background: #880e4f;
+      position: absolute;
+      top: -14px;
+      left: -6px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.3);
+    }
+    .gift-ribbon-v {
+      width: 22px;
+      height: 100%;
+      background: var(--gold-metallic);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .gift-ribbon-h {
+      width: 100%;
+      height: 22px;
+      background: var(--gold-metallic);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .gift-bow-tie {
+      width: 34px;
+      height: 26px;
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffd700;
+      border-radius: 50% 50% 10% 10%;
+      box-shadow: 0 0 12px #ffd700;
+    }
+
+    .gift-container.box-open .gift-lid-cap {
+      transform: translateY(-90px) rotate(-28deg) scale(0.9);
+      opacity: 0;
+    }
+    .gift-container.box-open {
+      background: transparent;
+      box-shadow: 0 0 60px 30px rgba(255, 215, 0, 0.7);
+    }
+    .gift-container.box-open .gift-ribbon-v,
+    .gift-container.box-open .gift-ribbon-h {
+      opacity: 0;
+    }
+
+    .cake-assembly {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%) translateY(75px) scale(0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 1.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cake-assembly.rise {
+      transform: translateX(-50%) translateY(-15px) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cake-tier {
+      border-radius: 14px;
+      position: relative;
+      box-shadow: inset 0 -8px 0 rgba(0,0,0,0.18), 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .cake-tier-base {
+      width: 190px;
+      height: 72px;
+      background: linear-gradient(to right, #f48fb1, #f06292, #f48fb1);
+      border: 3px solid #ffdae9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cake-tier-base .hbd-lettering {
+      font-family: var(--font-cinzel);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 8px #ff0055, 0 2px 3px rgba(0,0,0,0.8);
+    }
+    .cake-tier-top {
+      width: 125px;
+      height: 56px;
+      background: linear-gradient(to right, #ffe082, #ffd54f, #ffe082);
+      border: 3px solid #fff9c4;
+      margin-bottom: -5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .cream-drips {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 16px;
+      background: #ffffff;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .candle-stick {
+      position: absolute;
+      top: -24px;
+      width: 8px;
+      height: 24px;
+      background: repeating-linear-gradient(45deg, #00e5ff, #00e5ff 4px, #ffffff 4px, #ffffff 8px);
+      border-radius: 4px;
+    }
+    .candle-stick.c1 { left: 35%; }
+    .candle-stick.c2 { left: 60%; }
+
+    .wick-flame {
+      width: 11px;
+      height: 16px;
+      background: radial-gradient(ellipse at bottom, #fff 0%, #ffeb3b 40%, #ff5722 100%);
+      border-radius: 50% 50% 20% 20%;
+      position: absolute;
+      top: -15px;
+      left: -2px;
+      box-shadow: 0 0 15px 4px #ff9800;
+      animation: flameFlicker 0.8s infinite alternate;
+      transition: opacity 0.4s ease;
+    }
+    @keyframes flameFlicker {
+      0% { transform: scale(1) rotate(-3deg); }
+      100% { transform: scale(1.15) rotate(3deg); }
+    }
+    .wick-flame.snuffed { opacity: 0 !important; }
+
+    .ceremonial-knife {
+      position: absolute;
+      top: -95px;
+      right: -60px;
+      width: 115px;
+      height: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transform: rotate(35deg);
+      transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 30;
+    }
+    .c-blade {
+      width: 78px;
+      height: 19px;
+      background: linear-gradient(180deg, #ffffff, #b0bec5);
+      clip-path: polygon(0 40%, 85% 0, 100% 100%, 0% 100%);
+      position: absolute;
+      left: 0;
+      box-shadow: 0 0 10px rgba(255,255,255,0.85);
+    }
+    .c-handle {
+      width: 37px;
+      height: 15px;
+      background: linear-gradient(90deg, #d4af37, #805814);
+      position: absolute;
+      right: 0;
+      top: 2px;
+      border-radius: 3px;
+    }
+    .ceremonial-knife.cutting-down {
+      opacity: 1;
+      top: 15px;
+      right: 48px;
+      transform: rotate(-15deg);
+    }
+
+    .cut-slit-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 64%;
+      width: 3px;
+      background: #880e4f;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .cake-slice-separable {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 44px;
+      height: 100%;
+      overflow: hidden;
+      transition: transform 1s ease 0.6s;
+    }
+    .cake-assembly.cut-done .cut-slit-line { opacity: 0.95; }
+    .cake-assembly.cut-done .cake-slice-separable {
+      transform: translateX(18px) translateY(8px) rotate(8deg);
+    }
+
+    .smoke-puff {
+      position: absolute;
+      top: -20px;
+      width: 8px;
+      height: 8px;
+      background: rgba(230, 230, 230, 0.85);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .smoke-puff.drift { animation: puffDrift 1.3s forwards; }
+    @keyframes puffDrift {
+      0% { opacity: 0.9; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-45px) scale(3.5); }
+    }
+
+    .door-entrance-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #080309;
+      transition: opacity 1.3s ease, visibility 1.3s ease;
+    }
+    .door-entrance-layer.vanish {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .door-arch {
+      width: 310px;
+      height: 520px;
+      max-height: 75vh;
+      border: 12px solid #3d2314;
+      border-top-left-radius: 160px;
+      border-top-right-radius: 160px;
+      position: relative;
+      perspective: 1000px;
+      box-shadow: 0 0 50px rgba(255, 193, 7, 0.4), inset 0 0 20px #000;
+      display: flex;
+      background: #140812;
+    }
+    .door-panel {
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, #4e2711, #2b1407);
+      border: 3px solid #6b3e1f;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 2.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+    .door-panel.left {
+      transform-origin: left center;
+      border-top-left-radius: 145px;
+    }
+    .door-panel.right {
+      transform-origin: right center;
+      border-top-right-radius: 145px;
+    }
+    .door-panel.left.open { transform: rotateY(-118deg); }
+    .door-panel.right.open { transform: rotateY(118deg); }
+    .door-handle {
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle, #ffe082, #ffb300);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ffb300;
+      position: absolute;
+      top: 55%;
+    }
+    .door-panel.left .door-handle { right: 15px; }
+    .door-panel.right .door-handle { left: 15px; }
+    .door-header-title {
+      font-family: var(--font-cinzel);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gold-primary);
+      letter-spacing: 6px;
+      margin-bottom: 25px;
+      text-shadow: 0 0 20px var(--gold-secondary);
+      animation: textGlowPulse 2s infinite alternate;
+    }
+    @keyframes textGlowPulse {
+      0% { text-shadow: 0 0 10px #ffc107; transform: scale(1); }
+      100% { text-shadow: 0 0 30px #ffeb3b; transform: scale(1.03); }
+    }
+
+    .action-controls-box {
+      position: fixed;
+      bottom: 6%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 120;
+      pointer-events: none;
+    }
+    .glow-action-btn {
+      pointer-events: auto !important;
+      padding: 16px 36px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1.5px;
+      color: #12020a;
+      background: linear-gradient(45deg, #ffd700, #ffaa00, #ffd700);
+      border: 2px solid #fff;
+      border-radius: 50px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), 0 8px 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transform: scale(1);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .glow-action-btn:active { transform: scale(0.94); }
+    .glow-action-btn.hidden { display: none !important; }
+
+    .grand-celebration-title {
+      position: fixed;
+      top: 13%;
+      width: 100%;
+      text-align: center;
+      z-index: 80;
+      font-family: var(--font-cinzel);
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      padding: 0 15px;
+      text-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055, 0 2px 4px #000;
+      opacity: 0;
+      transform: translateY(-20px) scale(0.9);
+      transition: all 1s ease;
+      pointer-events: none;
+    }
+    .grand-celebration-title.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .letter-dialog-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, rgba(30, 7, 24, 0.95) 0%, rgba(5, 1, 8, 0.98) 100%);
+      backdrop-filter: blur(16px);
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.3s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 1.3s ease;
+      padding: 20px 14px;
+      overflow: hidden;
+    }
+    .letter-dialog-screen.revealed {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .floating-letter-heart {
+      position: absolute;
+      bottom: -40px;
+      color: #ff6584;
+      font-size: 18px;
+      opacity: 0;
+      pointer-events: none;
+      animation: floatHeartUp linear forwards;
+      z-index: 201;
+    }
+    @keyframes floatHeartUp {
+      0% { opacity: 0; transform: translateY(0) scale(0.6) rotate(0deg); }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      100% { opacity: 0; transform: translateY(-110vh) scale(1.3) rotate(35deg); }
+    }
+
+    .letter-parchment {
+      background: linear-gradient(145deg, #1d0918, #0e030c);
+      border: 2px solid #ffd700;
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.35), 0 20px 60px rgba(0, 0, 0, 0.9), inset 0 0 35px rgba(212, 175, 55, 0.1);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 540px;
+      max-height: 82vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      padding: 38px 22px 24px;
+      position: relative;
+      transform: scale(0.85) translateY(30px);
+      transition: transform 1.2s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    }
+    .letter-parchment::-webkit-scrollbar { width: 4px; }
+    .letter-parchment::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 4px; }
+
+    .letter-dialog-screen.revealed .letter-parchment {
+      transform: scale(1) translateY(0);
+    }
+
+    .wax-seal {
+      width: 52px;
+      height: 52px;
+      background: radial-gradient(circle at 35% 35%, #e53935, #880e4f);
+      border-radius: 50%;
+      position: sticky;
+      top: -20px;
+      margin: -25px auto 15px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7), 0 0 25px rgba(229, 57, 53, 0.6);
+      border: 2px solid rgba(255, 215, 0, 0.8);
+      z-index: 210;
+    }
+    .wax-seal span { font-size: 22px; }
+
+    .typewriter-content {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #fff4e6;
+      min-height: 180px;
+      white-space: pre-line;
+      text-shadow: 0 0 10px rgba(255, 245, 230, 0.25), 0 1px 3px rgba(0,0,0,0.9);
+      position: relative;
+      z-index: 5;
+    }
+    .cursor-marker {
+      display: inline-block;
+      width: 3px;
+      height: 18px;
+      background: #ffd700;
+      animation: cursorBlink 0.7s infinite;
+      vertical-align: middle;
+      margin-left: 3px;
+      box-shadow: 0 0 10px #ffd700;
+    }
+    @keyframes cursorBlink { 50% { opacity: 0; } }
+
+    .letter-ending-block {
+      margin-top: 22px;
+      border-top: 1px dashed rgba(255, 215, 0, 0.35);
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: all 1s ease;
+      position: relative;
+      z-index: 10;
+    }
+    .letter-ending-block.show {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    .blessing-text {
+      font-family: var(--font-cinzel);
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      color: #ff85a1;
+      font-weight: 700;
+      margin-bottom: 2px;
+      text-shadow: 0 0 12px rgba(255, 133, 161, 0.5);
+    }
+    .brother-sign {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.6rem;
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+      line-height: 1.2;
+    }
+
+    .flying-balloon {
+      position: fixed;
+      bottom: -100px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      z-index: 65;
+      pointer-events: none;
+      animation: floatToSky linear forwards;
+    }
+    @keyframes floatToSky {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-120vh) rotate(20deg); opacity: 0.9; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="celebrationCanvas"></canvas>
+
+  <!-- STEP 1: CLOSED DOOR -->
+  <div class="door-entrance-layer" id="doorLayer">
+    <div class="fairy-lights-string">
+      <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+      <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+      <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+    </div>
+    
+    <div class="door-header-title">SURPRISE</div>
+
+    <div class="door-arch">
+      <div class="door-panel left" id="doorLeft">
+        <div class="door-handle"></div>
+      </div>
+      <div class="door-panel right" id="doorRight">
+        <div class="door-handle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: DECORATED BIRTHDAY ROOM -->
+  <div class="scene-viewport">
+    <div class="room-world" id="roomWorld">
+      <div class="fairy-lights-string">
+        <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+        <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+        <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+      </div>
+
+      <div class="chandelier-cluster">
+        <div class="jhoomar-unit side">
+          <div class="j-chain"></div>
+          <div class="j-tier-main"></div>
+          <div class="j-crystal-hangs">
+            <div class="j-crystal"></div><div class="j-crystal"></div><div class="j-crystal"></div>
+          </div>
+        </div>
+        <div class="jhoomar-unit center">
+          <div class="j-chain" style="height: 65px;"></div>
+          <div class="j-tier-main" style="width: 140px; height: 26px;"></div>
+          <div class="j-tier-small"></div>
+          <div class="j-crystal-hangs">
+            <div class="j-crystal" style="height:32px"></div>
+            <div class="j-crystal" style="height:40px"></div>
+            <div class="j-crystal" style="height:45px"></div>
+            <div class="j-crystal" style="height:40px"></div>
+            <div class="j-crystal" style="height:32px"></div>
+          </div>
+        </div>
+        <div class="jhoomar-unit side">
+          <div class="j-chain"></div>
+          <div class="j-tier-main"></div>
+          <div class="j-crystal-hangs">
+            <div class="j-crystal"></div><div class="j-crystal"></div><div class="j-crystal"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="curtain left"></div>
+      <div class="curtain right"></div>
+
+      <div class="room-balloon" style="top:25%; left:8%; background:#ff4081;"></div>
+      <div class="room-balloon" style="top:35%; left:12%; background:#ffd700;"></div>
+      <div class="room-balloon" style="top:28%; right:10%; background:#7c4dff;"></div>
+      <div class="room-balloon" style="top:40%; right:14%; background:#00e5ff;"></div>
+
+      <div class="stage-center">
+        <div class="gift-container" id="giftBox" style="display:none;">
+          <div class="gift-lid-cap"><div class="gift-bow-tie"></div></div>
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+        </div>
+
+        <div class="cake-assembly" id="cakeAssembly">
+          <div class="ceremonial-knife" id="knifeObj">
+            <div class="c-blade"></div>
+            <div class="c-handle"></div>
+          </div>
+
+          <div class="cake-tier cake-tier-top">
+            <div class="cream-drips"></div>
+            <div class="candle-stick c1">
+              <div class="wick-flame" id="flameA"></div>
+              <div class="smoke-puff" id="smokeA"></div>
+            </div>
+            <div class="candle-stick c2">
+              <div class="wick-flame" id="flameB"></div>
+              <div class="smoke-puff" id="smokeB"></div>
+            </div>
+          </div>
+
+          <div class="cake-tier cake-tier-base">
+            <div class="cut-slit-line"></div>
+            <div class="cake-slice-separable">
+              <div style="width:190px; height:100%; background:inherit; position:absolute; right:0;"></div>
+            </div>
+            <div class="hbd-lettering">HAPPY BIRTHDAY</div>
+          </div>
+        </div>
+
+        <div class="table-stand">
+          <div class="table-runner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grand-celebration-title" id="celebrationHeader">
+    HAPPY BIRTHDAY DEAR CHHOTNKI SISTER ❤️
+  </div>
+
+  <div class="action-controls-box">
+    <button class="glow-action-btn" id="btnDoor">OPEN THE DOOR 🚪</button>
+    <button class="glow-action-btn hidden" id="btnEnter">ENTER THE ROOM ✨</button>
+    <button class="glow-action-btn hidden" id="btnSurprise">OPEN THE SURPRISE 🎁</button>
+    <button class="glow-action-btn hidden" id="btnCut">CUT THE CAKE 🎂</button>
+    <button class="glow-action-btn hidden" id="btnNext">NEXT SURPRISE ✨</button>
+  </div>
+
+  <div class="letter-dialog-screen" id="letterScreen">
+    <div class="letter-parchment" id="letterParchment">
+      <div class="wax-seal"><span>❤️</span></div>
+
+      <div class="typewriter-content" id="typewriterTarget"><span class="cursor-marker"></span></div>
+
+      <div class="letter-ending-block" id="letterEnding">
+        <div class="blessing-text">WITH LOTS OF BLESSINGS ❤️</div>
+        <div class="brother-sign">— Your Brother</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SISTER_MESSAGE = 
+`I may not be your own brother, but whenever you face any problem, and when you cannot reach anyone else, remember me. I will always be available for you.
+
+Always stay happy, keep smiling, and keep making everyone around you smile.
+
+May this day be beautiful and special for you. May all your wishes come true, and may happiness always surround you.
+
+My blessings are always with you.
+
+Happy Birthday, dear Chhotnki Sister! ❤️🎂✨`;
+
+    const btnDoor = document.getElementById('btnDoor');
+    const btnEnter = document.getElementById('btnEnter');
+    const btnSurprise = document.getElementById('btnSurprise');
+    const btnCut = document.getElementById('btnCut');
+    const btnNext = document.getElementById('btnNext');
+
+    const doorLayer = document.getElementById('doorLayer');
+    const doorLeft = document.getElementById('doorLeft');
+    const doorRight = document.getElementById('doorRight');
+    const roomWorld = document.getElementById('roomWorld');
+    const giftBox = document.getElementById('giftBox');
+    const cakeAssembly = document.getElementById('cakeAssembly');
+    const knifeObj = document.getElementById('knifeObj');
+    const flameA = document.getElementById('flameA');
+    const flameB = document.getElementById('flameB');
+    const smokeA = document.getElementById('smokeA');
+    const smokeB = document.getElementById('smokeB');
+    const celebrationHeader = document.getElementById('celebrationHeader');
+    const letterScreen = document.getElementById('letterScreen');
+    const letterParchment = document.getElementById('letterParchment');
+    const typewriterTarget = document.getElementById('typewriterTarget');
+    const letterEnding = document.getElementById('letterEnding');
+
+    /* ========================================================
+       EXACT MATCH TO YOUR FILE: "Birthday special.mp3"
+       ======================================================== */
+    const myAudio = new Audio();
+    // Try both raw name and encoded URL for phone Chrome
+    myAudio.src = 'Birthday special.mp3';
+    myAudio.preload = 'auto';
+
+    // Mobile user-gesture unlock on "OPEN THE DOOR"
+    function unlockAudio() {
+      myAudio.play().then(() => {
+        myAudio.pause();
+        myAudio.currentTime = 0;
+      }).catch(() => {});
+      document.removeEventListener('touchstart', unlockAudio);
+      document.removeEventListener('click', unlockAudio);
+    }
+    document.addEventListener('touchstart', unlockAudio, { once: true });
+    document.addEventListener('click', unlockAudio, { once: true });
+
+    // CANVAS FX
+    const canvas = document.getElementById('celebrationCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    let particles = [];
+    let celebrationActive = false;
+
+    class SparkParticle {
+      constructor(x, y, color, vx, vy, size, type) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.vx = vx;
+        this.vy = vy;
+        this.size = size;
+        this.type = type;
+        this.alpha = 1;
+        this.gravity = type === 'confetti' ? 0.08 : 0.04;
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 8;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += this.gravity;
+        this.rotation += this.rotSpeed;
+        if (this.type === 'firework') {
+          this.alpha -= 0.015;
+        } else {
+          this.alpha -= 0.003;
+        }
+      }
+      draw(c) {
+        c.save();
+        c.globalAlpha = Math.max(0, this.alpha);
+        c.translate(this.x, this.y);
+        c.rotate((this.rotation * Math.PI) / 180);
+        c.fillStyle = this.color;
+        if (this.type === 'confetti') {
+          c.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 1.6);
+        } else {
+          c.beginPath();
+          c.arc(0, 0, this.size, 0, Math.PI * 2);
+          c.fill();
+        }
+        c.restore();
+      }
+    }
+
+    function launchRocket() {
+      const x = Math.random() * (width * 0.8) + (width * 0.1);
+      const y = Math.random() * (height * 0.4) + (height * 0.1);
+      const palette = ['#ff0055', '#ffd700', '#00e5ff', '#ff3d00', '#76ff03', '#ffffff'];
+      const chosenColor = palette[Math.floor(Math.random() * palette.length)];
+      for (let i = 0; i < 45; i++) {
+        const angle = (Math.PI * 2 * i) / 45;
+        const speed = Math.random() * 5 + 2;
+        particles.push(new SparkParticle(
+          x, y, chosenColor,
+          Math.cos(angle) * speed,
+          Math.sin(angle) * speed,
+          Math.random() * 3 + 2,
+          'firework'
+        ));
+      }
+    }
+
+    function rainConfetti() {
+      const colors = ['#ff1744', '#ffd600', '#00e676', '#2979ff', '#d500f9'];
+      for (let i = 0; i < 7; i++) {
+        particles.push(new SparkParticle(
+          Math.random() * width,
+          -10,
+          colors[Math.floor(Math.random() * colors.length)],
+          (Math.random() - 0.5) * 3,
+          Math.random() * 3 + 2,
+          Math.random() * 8 + 5,
+          'confetti'
+        ));
+      }
+    }
+
+    function renderFXLoop() {
+      ctx.clearRect(0, 0, width, height);
+      if (celebrationActive) {
+        if (Math.random() < 0.08) launchRocket();
+        rainConfetti();
+      }
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.update();
+        p.draw(ctx);
+        if (p.alpha <= 0 || p.y > height + 50) {
+          particles.splice(i, 1);
+        }
+      }
+      requestAnimationFrame(renderFXLoop);
+    }
+    renderFXLoop();
+
+    function releaseCelebrationBalloons() {
+      const shades = ['#ff4081', '#ffd700', '#00e5ff', '#7c4dff', '#76ff03'];
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const b = document.createElement('div');
+          b.className = 'flying-balloon';
+          const diameter = Math.random() * 25 + 40;
+          b.style.width = diameter + 'px';
+          b.style.height = (diameter * 1.3) + 'px';
+          b.style.left = (Math.random() * 90) + 'vw';
+          b.style.backgroundColor = shades[Math.floor(Math.random() * shades.length)];
+          b.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+          b.style.animationDuration = (Math.random() * 4 + 5) + 's';
+          document.body.appendChild(b);
+          setTimeout(() => b.remove(), 9000);
+        }, i * 350);
+      }
+    }
+
+    function startLetterHearts() {
+      setInterval(() => {
+        if (!letterScreen.classList.contains('revealed')) return;
+        const heart = document.createElement('div');
+        heart.className = 'floating-letter-heart';
+        const heartsIcons = ['❤️', '💖', '✨', '🌸', '💫'];
+        heart.innerText = heartsIcons[Math.floor(Math.random() * heartsIcons.length)];
+        heart.style.left = (Math.random() * 92 + 4) + 'vw';
+        heart.style.fontSize = (Math.random() * 14 + 14) + 'px';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        letterScreen.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+      }, 450);
+    }
+
+    /* STEP 1: OPEN DOOR */
+    btnDoor.addEventListener('click', () => {
+      unlockAudio();
+      doorLeft.classList.add('open');
+      doorRight.classList.add('open');
+      btnDoor.classList.add('hidden');
+
+      setTimeout(() => {
+        doorLayer.classList.add('vanish');
+        btnEnter.classList.remove('hidden');
+      }, 1200);
+    });
+
+    /* STEP 2: ENTER ROOM */
+    btnEnter.addEventListener('click', () => {
+      btnEnter.classList.add('hidden');
+      roomWorld.classList.add('enter-walk');
+
+      setTimeout(() => {
+        giftBox.style.display = 'block';
+        btnSurprise.classList.remove('hidden');
+      }, 1500);
+    });
+
+    /* STEP 3: OPEN SURPRISE */
+    btnSurprise.addEventListener('click', () => {
+      btnSurprise.classList.add('hidden');
+      giftBox.classList.add('box-open');
+
+      for (let i = 0; i < 20; i++) {
+        particles.push(new SparkParticle(
+          width / 2, height * 0.65, '#ffd700',
+          (Math.random() - 0.5) * 6, (Math.random() - 0.5) * 6 - 3,
+          4, 'firework'
+        ));
+      }
+
+      setTimeout(() => {
+        cakeAssembly.classList.add('rise');
+        setTimeout(() => {
+          btnCut.classList.remove('hidden');
+        }, 1000);
+      }, 700);
+    });
+
+    /* STEP 4: CUT CAKE & PLAY "Birthday special.mp3" */
+    btnCut.addEventListener('click', () => {
+      btnCut.classList.add('hidden');
+
+      // PLAY EXACT AUDIO FILE
+      myAudio.currentTime = 0;
+      myAudio.play().catch(() => {
+        // Fallback with URL-encoded space
+        myAudio.src = 'Birthday%20special.mp3';
+        myAudio.play().catch(e => console.log('Final audio catch:', e));
+      });
+
+      knifeObj.classList.add('cutting-down');
+
+      setTimeout(() => {
+        cakeAssembly.classList.add('cut-done');
+        flameA.classList.add('snuffed');
+        flameB.classList.add('snuffed');
+        smokeA.classList.add('drift');
+        smokeB.classList.add('drift');
+
+        setTimeout(() => {
+          knifeObj.style.display = 'none';
+        }, 600);
+
+        // STEP 5: AUTOMATIC CELEBRATION
+        setTimeout(() => {
+          celebrationActive = true;
+          releaseCelebrationBalloons();
+          celebrationHeader.classList.add('show');
+
+          setTimeout(() => {
+            btnNext.classList.remove('hidden');
+          }, 4000);
+        }, 800);
+
+      }, 700);
+    });
+
+    /* STEP 6 & 7: NEXT SURPRISE */
+    btnNext.addEventListener('click', () => {
+      btnNext.classList.add('hidden');
+      celebrationHeader.classList.remove('show');
+      letterScreen.classList.add('revealed');
+      startLetterHearts();
+
+      let currentIdx = 0;
+      typewriterTarget.innerHTML = '<span class="cursor-marker"></span>';
+      
+      function typeNextLetter() {
+        if (currentIdx < SISTER_MESSAGE.length) {
+          const written = SISTER_MESSAGE.substring(0, currentIdx + 1);
+          typewriterTarget.innerHTML = written.replace(/\n/g, '<br>') + '<span class="cursor-marker"></span>';
+          currentIdx++;
+          
+          letterParchment.scrollTop = letterParchment.scrollHeight;
+          setTimeout(typeNextLetter, 32);
+        } else {
+          document.querySelector('.cursor-marker')?.remove();
+          letterEnding.classList.add('show');
+          setTimeout(() => {
+            letterParchment.scrollTo({
+              top: letterParchment.scrollHeight,
+              behavior: 'smooth'
+            });
+          }, 150);
+        }
+      }
+      setTimeout(typeNextLetter, 800);
+    });
+  </script>
+</body>
+</html>
